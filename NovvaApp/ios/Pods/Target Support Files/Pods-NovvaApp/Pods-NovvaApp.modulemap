@@ -1,0 +1,6 @@
+module Pods_NovvaApp {
+  umbrella header "Pods-NovvaApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

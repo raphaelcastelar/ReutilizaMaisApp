@@ -104,12 +104,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF6200',
     paddingVertical: 10,
     paddingHorizontal: 40,
-    borderRadius: 25,
+    borderRadius: 15,
     marginBottom: 10,
     height: 63,
     width: 372,
-    justifyContent: 'center', // Centraliza o texto dentro do botão
-    alignItems: 'center', // Centraliza o texto dentro do botão
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
   buttonText: {
     color: '#FFF',

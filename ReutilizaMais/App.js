@@ -13,6 +13,7 @@ import BoasVindasTela from './screens/BoasVindasTela'
 import LoginTela from './screens/LoginTela'
 import CadastroForm from './screens/CadastroForm';
 import EnderecoForm from './screens/EnderecoForm';
+import CadastroConfirmacao from './screens/CadastroConfirmacao';
 
 
 
@@ -79,6 +80,7 @@ const App = () => {
           <Stack.Screen name="LoginTela" component={LoginTela} />
           <Stack.Screen name ="CadastroForm" component={CadastroForm} />
           <Stack.Screen name ="EnderecoForm" component={EnderecoForm} />
+          <Stack.Screen name ="CadastroConfirmacao" component={CadastroConfirmacao} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />

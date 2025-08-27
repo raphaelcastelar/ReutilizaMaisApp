@@ -53,9 +53,9 @@ export default function EnderecoForm({ navigation, route }) {
       <View style={styles.header}>
         <Text style={styles.headerText}>Endereço</Text>
         <View style={styles.progressIndicator}>
-          <View style={styles.progressDotDone} />     {/* etapa anterior (CadastroForm) — verde */}
-          <View style={styles.progressDotActive} />   {/* etapa atual (Endereço) — cinza forte */}
-          <View style={styles.progressDot} />         {/* próxima — cinza claro */}
+          <View style={styles.progressDotDone} />     
+          <View style={styles.progressDotActive} />   
+          <View style={styles.progressDot} />         
         </View>
       </View>
 

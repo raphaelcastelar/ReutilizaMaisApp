@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 
-const CadastroForm = () => {
+const CadastroForm = ({ navigation }) => {
     // Definindo o estado para cada campo do formulário
     const [razaoSocial, setRazaoSocial] = useState('');
     const [nomeFantasia, setNomeFantasia] = useState('');
@@ -11,14 +11,16 @@ const CadastroForm = () => {
     const [representanteLegal, setRepresentanteLegal] = useState('');
     const [celular, setCelular] = useState('');
     const [cargo, setCargo] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [cnpjError, setCnpjError] = useState('');
 
-    //Validação de e-mail
+    // Validação de e-mail
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
-    //Validação de CNPJ
+    // Validação de CNPJ (aceita apenas números, remove formatação)
     const validateCNPJ = (cnpj) => {
         // Remove caracteres que não são dígitos
         cnpj = cnpj.replace(/[^\d]+/g, '');
@@ -55,48 +57,44 @@ const CadastroForm = () => {
         if (resultado !== parseInt(digitos.charAt(1))) return false;
 
         return true;
-        };
+    };
 
-
-    // Função de exemplo para lidar com a submissão do formulário
-    const handleContinuar = async () => {
-        //validação do e-mail
+    // Função para lidar com a submissão do formulário
+    const handleContinuar = () => {
+        // Validação do e-mail
         if (!validateEmail(email)) {
-            alert('Por favor, insira um e-mail válido.');
-        }
-
-        //validação de CNPJ
-        if (!validateCNPJ(cnpj)) {
-            setCNPJError('Por favor, insira um CNPJ válido.');
-        }
-        if (emailError || cnpjError) {
+            setEmailError('Por favor, insira um e-mail válido.');
             return;
+        } else {
+            setEmailError('');
         }
 
-        setEmailError('');
-        setIsLoading(true);
+        // Validação de CNPJ
+        if (!validateCNPJ(cnpj)) {
+            setCnpjError('Por favor, insira um CNPJ válido (apenas números, 14 dígitos).');
+            return;
+        } else {
+            setCnpjError('');
+        }
 
+        // Navegar para a tela EnderecoForm se as validações passarem
         try {
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-        
-        const formData = {
-            razaoSocial,
-            nomeFantasia,
-            email,
-            cnpj,
-            naturezaJuridica,
-            representanteLegal,
-            celular,
-            cargo,
-        };
-        
-        console.log('Dados do formulário:', formData);
-        Alert.alert('Concluído', 'Seu cadastro foi realizado com sucesso!');
-    } catch (error) {
-        console.error('Erro ao enviar o formulário:', error);
-        Alert.alert('Erro', 'Ocorreu um erro ao submeter os dados cadastrais. Tente novamente.');
-    } finally {
-        setIsLoading(false);}
+            navigation.navigate('EnderecoForm', {
+                dadosCadastro: {
+                    razaoSocial,
+                    nomeFantasia,
+                    email,
+                    cnpj: cnpj.replace(/[^\d]+/g, ''), // Passa apenas os dígitos
+                    naturezaJuridica,
+                    representanteLegal,
+                    celular,
+                    cargo,
+                },
+            });
+        } catch (error) {
+            console.error('Erro ao navegar para EnderecoForm:', error);
+            Alert.alert('Erro', 'Ocorreu um erro ao avançar. Tente novamente.');
+        }
     };
 
     return (
@@ -154,13 +152,15 @@ const CadastroForm = () => {
                     onChangeText={setEmail}
                     keyboardType="email-address"
                 />
+                {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
                 <TextInput
                     style={styles.input}
                     placeholder="CNPJ"
                     value={cnpj}
-                    onChangeText={setCnpj}
+                    onChangeText={(text) => setCnpj(text)} // Permite formatação manual, mas valida sem ela
                     keyboardType="numeric"
                 />
+                {cnpjError ? <Text style={styles.errorText}>{cnpjError}</Text> : null}
                 <TextInput
                     style={styles.input}
                     placeholder="Natureza Jurídica"
@@ -195,7 +195,7 @@ const CadastroForm = () => {
 
             {/* Seção de botões */}
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.backButton}>
+                <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('BoasVindasTela')}>
                     <Text style={styles.backButtonText}>Voltar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
@@ -309,6 +309,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginBottom: 10,
         backgroundColor: 'transparent',
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 12,
+        marginBottom: 10,
     },
     buttonContainer: {
         flexDirection: 'row',

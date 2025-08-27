@@ -66,13 +66,13 @@ const CadastroForm = () => {
         }
 
         //validação de CNPJ
-        if (!validadeCNPJ(cnpj)) {
+        if (!validateCNPJ(cnpj)) {
             setCNPJError('Por favor, insira um CNPJ válido.');
         }
         if (emailError || cnpjError) {
             return;
         }
-
+       console.log('entrou')
         setEmailError('');
         setIsLoading(true);
 

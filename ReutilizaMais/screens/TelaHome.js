@@ -9,7 +9,7 @@ const BG = '#F8F4E6';
 const ORANGE = '#FF6200';
 const TEXT = '#333';
 
-export default function TelaHome() {
+export default function TelaHome({navigation}) {
   const slideWidth = Dimensions.get('window').width / 2;
   const imgs = [
     require('../assets/campos-propaganda.png'),
@@ -51,7 +51,7 @@ export default function TelaHome() {
           <View style={styles.block}>
             <Text style={styles.sectionTitle}>O que deseja fazer?</Text>
 
-            <TouchableOpacity style={styles.primaryBtn} activeOpacity={0.9}>
+            <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('TelaDoacao')} activeOpacity={0.9}>
               <Text style={styles.primaryBtnText}>Nova doação</Text>
               <Ionicons name="add" size={20} color="#fff" />
             </TouchableOpacity>

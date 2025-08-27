@@ -72,7 +72,7 @@ const CadastroForm = () => {
         if (emailError || cnpjError) {
             return;
         }
-       console.log('entrou')
+
         setEmailError('');
         setIsLoading(true);
 
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 15,
         marginBottom: 10,
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderColor: '#FF7F50',
         borderWidth: 1,
-        borderRadius: 30,
+        borderRadius: 10,
         paddingVertical: 15,
         marginRight: 10,
         alignItems: 'center',
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     continueButton: {
         flex: 1,
         backgroundColor: '#FF7F50',
-        borderRadius: 30,
+        borderRadius: 10,
         paddingVertical: 15,
         marginLeft: 10,
         alignItems: 'center',

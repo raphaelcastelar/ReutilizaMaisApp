@@ -35,7 +35,7 @@ const LoginTela = ({ navigation }) => {
             placeholder="Senha"
             secureTextEntry={true}
           />
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TelaHome')}>
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
         </View>

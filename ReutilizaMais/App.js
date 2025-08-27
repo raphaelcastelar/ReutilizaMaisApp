@@ -10,6 +10,7 @@ import * as SplashScreen from 'expo-splash-screen';
 
 
 import BoasVindasTela from './screens/BoasVindasTela'
+import TelaHome from './screens/TelaHome'
 import LoginTela from './screens/LoginTela'
 import CadastroForm from './screens/CadastroForm';
 import EnderecoForm from './screens/EnderecoForm';
@@ -78,9 +79,10 @@ const App = () => {
         >
           <Stack.Screen name="BoasVindasTela" component={BoasVindasTela} />
           <Stack.Screen name="LoginTela" component={LoginTela} />
-          <Stack.Screen name ="CadastroForm" component={CadastroForm} />
-          <Stack.Screen name ="EnderecoForm" component={EnderecoForm} />
-          <Stack.Screen name ="CadastroConfirmacao" component={CadastroConfirmacao} />
+          <Stack.Screen name="CadastroForm" component={CadastroForm} />
+          <Stack.Screen name="EnderecoForm" component={EnderecoForm} />
+          <Stack.Screen name="CadastroConfirmacao" component={CadastroConfirmacao} />
+          <Stack.Screen name="TelaHome" component={TelaHome} />
         </Stack.Navigator>
       </NavigationContainer>
       <Toast />

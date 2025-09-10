@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     headerText: {
+        marginTop: 50,
         fontSize: 16,
         color: '#666',
     },

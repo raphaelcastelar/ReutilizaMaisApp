@@ -119,7 +119,7 @@ export default function EnderecoForm({ navigation, route }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#EAE5D9', paddingHorizontal: 20 },
   header: { alignItems: 'center', paddingVertical: 20 },
-  headerText: { fontSize: 16, color: '#666' },
+  headerText: { fontSize: 16, color: '#666', marginTop: 50 },
 
   /* indicador de progresso */
   progressIndicator: { flexDirection: 'row', marginTop: 5 },

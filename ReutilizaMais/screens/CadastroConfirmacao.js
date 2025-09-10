@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   // --- Base visual igual às outras telas ---
   container: { flex: 1, backgroundColor: '#EAE5D9', paddingHorizontal: 20 },
   header: { alignItems: 'center', paddingVertical: 20 },
-  headerText: { fontSize: 16, color: '#666' },
+  headerText: { fontSize: 16, color: '#666', marginTop: 50 },
   progressIndicator: { flexDirection: 'row', marginTop: 5 },
   progressDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#ccc', marginHorizontal: 4 },
   progressDotActive: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#777', marginHorizontal: 4 },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 
   input: {
     height: 50, borderColor: '#ccc', borderWidth: 1, borderRadius: 10,
-    paddingHorizontal: 15, marginBottom: 10, backgroundColor: '#fff',
+    paddingHorizontal: 15, marginBottom: 10, backgroundColor: 'transparent',
   },
   readonly: {
     color: '#333',
